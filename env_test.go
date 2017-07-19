@@ -368,8 +368,8 @@ func TestBool(t *testing.T) {
 }
 
 func TestTime(t *testing.T) {
-	t2000 := time.Date(2000, 1, 14, 0, 0, 0, 0, time.UTC)
-	t2011 := time.Date(2011, 12, 31, 0, 0, 0, 0, time.Local)
+	t2000 := time.Date(2000, 1, 14, 0, 0, 0, 0, time.UTC).Truncate(time.Second)
+	t2011 := time.Date(2011, 12, 31, 0, 0, 0, 0, time.Local).Truncate(time.Second)
 
 	tests := []struct {
 		Env      map[string]string
@@ -424,8 +424,7 @@ func TestTime(t *testing.T) {
 
 	for i, tt := range tests {
 		getter = mockedGetter(tt.Env)
-		got := Time(tt.Default, time.RFC3339, tt.Keys...)
-		if have, want := got.Truncate(2*time.Second), tt.Expected.Truncate(2*time.Second); have != want {
+		if have, want := Time(tt.Default, time.RFC3339, tt.Keys...), tt.Expected; have != want {
 			t.Errorf("#%d: have %v, want %v", i, have, want)
 		}
 	}
