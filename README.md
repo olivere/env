@@ -1,7 +1,7 @@
 # What is it?
 
 The `env` package is to simplify reading environment variables with e.g.
-the `flags` package.
+the `flag` package.
 
 Example:
 
@@ -10,6 +10,11 @@ When users leave out the flags, we want to fall back to environment variables.
 The `env` package simplifies this scenario.
 
 ```go
+import (
+    "flag"
+    "fmt"
+)
+
 func main() {
 	var (
 		// Parse addr from flag, use HTTP_ADDR and ADDR env vars as fallback
@@ -24,4 +29,4 @@ func main() {
 
 # License
 
-MIT. See LICENSE file.
+MIT. See [LICENSE](https://github.com/olivere/env/blob/master/LICENSE) file.
