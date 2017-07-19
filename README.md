@@ -1,5 +1,7 @@
 # What is it?
 
+[![Build Status](https://travis-ci.org/olivere/env.svg?branch=master)](https://travis-ci.org/olivere/env)
+
 The `env` package is to simplify reading environment variables with e.g.
 the `flag` package.
 
