@@ -424,7 +424,8 @@ func TestTime(t *testing.T) {
 
 	for i, tt := range tests {
 		getter = mockedGetter(tt.Env)
-		if have, want := Time(tt.Default, time.RFC3339, tt.Keys...), tt.Expected; have != want {
+		got := Time(tt.Default, time.RFC3339, tt.Keys...)
+		if have, want := got.Truncate(2*time.Second), tt.Expected.Truncate(2*time.Second); have != want {
 			t.Errorf("#%d: have %v, want %v", i, have, want)
 		}
 	}
