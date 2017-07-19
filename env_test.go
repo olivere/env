@@ -369,7 +369,7 @@ func TestBool(t *testing.T) {
 
 func TestTime(t *testing.T) {
 	t2000 := time.Date(2000, 1, 14, 0, 0, 0, 0, time.UTC).Truncate(time.Second)
-	t2011 := time.Date(2011, 12, 31, 0, 0, 0, 0, time.Local).Truncate(time.Second)
+	t2011 := time.Date(2011, 12, 31, 0, 0, 0, 0, time.UTC).Truncate(time.Second)
 
 	tests := []struct {
 		Env      map[string]string
