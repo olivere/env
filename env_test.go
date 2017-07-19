@@ -374,6 +374,7 @@ func TestTime(t *testing.T) {
 	tests := []struct {
 		Env      map[string]string
 		Default  time.Time
+		Format   string
 		Keys     []string
 		Expected time.Time
 	}{
@@ -381,6 +382,7 @@ func TestTime(t *testing.T) {
 		{
 			Env:      map[string]string{},
 			Default:  t2000,
+			Format:   time.RFC3339,
 			Keys:     []string{"KEY"},
 			Expected: t2000,
 		},
@@ -390,6 +392,7 @@ func TestTime(t *testing.T) {
 				"KEY": t2011.Format(time.RFC3339),
 			},
 			Default:  t2000,
+			Format:   time.RFC3339,
 			Keys:     []string{"KEY"},
 			Expected: t2011,
 		},
@@ -399,6 +402,7 @@ func TestTime(t *testing.T) {
 				"key": t2011.Format(time.RFC3339),
 			},
 			Default:  t2000,
+			Format:   time.RFC3339,
 			Keys:     []string{"KEY"},
 			Expected: t2000,
 		},
@@ -408,6 +412,7 @@ func TestTime(t *testing.T) {
 				"KEY": t2011.Format(time.RFC3339),
 			},
 			Default:  t2000,
+			Format:   time.RFC3339,
 			Keys:     []string{"MISSING", "KEY"},
 			Expected: t2011,
 		},
@@ -417,6 +422,7 @@ func TestTime(t *testing.T) {
 				"KEY": "not-a-date",
 			},
 			Default:  t2000,
+			Format:   time.RFC3339,
 			Keys:     []string{"KEY"},
 			Expected: t2000,
 		},
@@ -424,8 +430,8 @@ func TestTime(t *testing.T) {
 
 	for i, tt := range tests {
 		getter = mockedGetter(tt.Env)
-		if have, want := Time(tt.Default, time.RFC3339, tt.Keys...), tt.Expected; have != want {
-			t.Errorf("#%d: have %v, want %v", i, have, want)
+		if have, want := Time(tt.Default, tt.Format, tt.Keys...), tt.Expected; have != want {
+			t.Errorf("#%d: have %v, want %v", i, have.Format(time.RFC3339), want.Format(time.RFC3339))
 		}
 	}
 }
