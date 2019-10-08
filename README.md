@@ -1,6 +1,6 @@
 # What is it?
 
-![](https://github.com/olivere/env/workflows/.github/workflows/test.yml/badge.svg)
+[![Actions Status](https://github.com/olivere/env/workflows/Test/badge.svg)](https://github.com/olivere/env/actions)
 
 The `env` package is to simplify reading environment variables with e.g.
 the `flag` package.
