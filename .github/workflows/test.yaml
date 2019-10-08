@@ -8,8 +8,6 @@ jobs:
         platform: [ubuntu-latest]
     name: Run ${{ matrix.go-version }} on ${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
-    env:
-      GO111MODULE: on
     steps:
     - name: Setup Go ${{ matrix.go-version }}
       uses: actions/setup-go@v1
