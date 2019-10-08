@@ -1,6 +1,6 @@
 # What is it?
 
-[![Build Status](https://travis-ci.org/olivere/env.svg?branch=master)](https://travis-ci.org/olivere/env)
+![](https://github.com/olivere/env/workflows/.github/workflows/test.yml/badge.svg)
 
 The `env` package is to simplify reading environment variables with e.g.
 the `flag` package.
